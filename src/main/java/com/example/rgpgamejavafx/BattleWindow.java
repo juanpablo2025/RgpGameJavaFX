@@ -49,44 +49,43 @@ public class BattleWindow {
         // Implementar la lógica del ataque
         int playerDamage = player.attack();
         enemy.takeDamage(playerDamage);
+        statusLabel.setText(player.getName() + " ataca a " + enemy.getName() + " y causa " + playerDamage + " de daño.");
 
         if (!enemy.isAlive()) {
-            statusLabel.setText("¡Felicidades! Has derrotado a " + enemy.getName() + ".");
+            statusLabel.setText(statusLabel.getText() + "\n¡Felicidades! Has derrotado a " + enemy.getName() + ".");
             return;
         }
 
         int enemyDamage = enemy.attack();
         player.takeDamage(enemyDamage);
+        statusLabel.setText(statusLabel.getText() + "\n" + enemy.getName() + " contraataca y causa " + enemyDamage + " de daño a " + player.getName() + ".");
 
         if (!player.isAlive()) {
-            statusLabel.setText("¡Game Over! " + enemy.getName() + " te ha derrotado.");
+            statusLabel.setText(statusLabel.getText() + "\n¡Game Over! " + enemy.getName() + " te ha derrotado.");
             return;
         }
-
-        updateStatusLabel(player, enemy, statusLabel);
     }
 
     private static void handleMagic(Player player, Enemy enemy, Label statusLabel) {
         // Implementar la lógica de la magia
         int magicDamage = player.castSpell();
         enemy.takeDamage(magicDamage);
+        statusLabel.setText(player.getName() + " lanza un hechizo sobre " + enemy.getName() + " y causa " + magicDamage + " de daño.");
 
         if (!enemy.isAlive()) {
-            statusLabel.setText("¡Felicidades! Has derrotado a " + enemy.getName() + ".");
+            statusLabel.setText(statusLabel.getText() + "\n¡Felicidades! Has derrotado a " + enemy.getName() + ".");
             return;
         }
 
         int enemyDamage = enemy.attack();
         player.takeDamage(enemyDamage);
+        statusLabel.setText(statusLabel.getText() + "\n" + enemy.getName() + " contraataca y causa " + enemyDamage + " de daño a " + player.getName() + ".");
 
         if (!player.isAlive()) {
-            statusLabel.setText("¡Game Over! " + enemy.getName() + " te ha derrotado.");
+            statusLabel.setText(statusLabel.getText() + "\n¡Game Over! " + enemy.getName() + " te ha derrotado.");
             return;
         }
-
-        updateStatusLabel(player, enemy, statusLabel);
     }
-
     private static void usePotion(Player player, Label statusLabel) {
         // Implementar la lógica de los objetos (pociones)
         // Aquí puedes implementar la lógica de los objetos según lo que necesites
@@ -96,7 +95,7 @@ public class BattleWindow {
     private static void handleFlee(Player player, Label statusLabel, Stage window, Stage primaryStage) {
         statusLabel.setText(player.getName() + " ha huido del combate.");
         window.close();
-        HelloApplication.restartApplication();
+        RpgJavaFXApplication.restartApplication();
 
     }
 

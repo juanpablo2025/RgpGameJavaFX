@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class HelloApplication extends Application {
+public class RpgJavaFXApplication extends Application {
     private Player player;
     private Enemy enemy;
     private Label statusLabel;
@@ -26,7 +26,7 @@ public class HelloApplication extends Application {
 
         // Crear jugador y enemigo
         player = new Player("Jugador", 100, 20);
-        enemy = new Enemy("Enemigo", 50, 10);
+        enemy = new Enemy("Enemigo", 100, 20);
 
         // Crear controles
         Label titleLabel = new Label("¡Bienvenido al juego RPG por turnos!");
@@ -62,7 +62,7 @@ public class HelloApplication extends Application {
         // Reiniciar la aplicación cerrando y volviendo a lanzar la instancia actual
         Platform.runLater(() -> {
             try {
-                new HelloApplication().start(new Stage());
+                new RpgJavaFXApplication().start(new Stage());
             } catch (Exception e) {
                 e.printStackTrace();
             }
